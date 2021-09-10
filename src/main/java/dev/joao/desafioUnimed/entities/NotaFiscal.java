@@ -12,6 +12,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entidade que representa as notas fiscais. Contém as regras de persistência com o JPA.
+ * As regras de validação de dados estão na classe NotaFiscalDTO.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

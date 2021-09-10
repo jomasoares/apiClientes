@@ -22,6 +22,9 @@ import dev.joao.desafioUnimed.exceptions.ClienteNotFoundException;
 import dev.joao.desafioUnimed.services.NotaFiscalService;
 import lombok.AllArgsConstructor;
 
+/**
+ * Controlador das requisições sobre notas fiscais, primeira camada da aplicação
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("api/v1/notasFiscais")
@@ -30,12 +33,25 @@ public class NotaFiscalController {
 
     private final NotaFiscalService notaFiscalService;
 
+    /**
+     * Endpoint para o cadastro de notas fiscais. 
+     * @param notaFiscalDTO Obrigatório. A nota fiscal a ser cadastrada.
+     * @return os dados completos da nota fiscal após o cadastro.
+     * @throws ClienteNotFoundException
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public NotaFiscalDTO createNotaFiscal(@RequestBody @Valid NotaFiscalDTO notaFiscalDTO) {
+    public NotaFiscalDTO createNotaFiscal(@RequestBody @Valid NotaFiscalDTO notaFiscalDTO) throws ClienteNotFoundException {
         return notaFiscalService.createNotaFiscal(notaFiscalDTO);
     }
 
+    /**
+     * Método para listar as notas fiscais. Aceita um filtro que retorna somente as
+     * notas de um cliente específico dado seu id.
+     * @param clienteId Optativo. Id do cliente que se deseja trazer as notas fiscais.
+     * @return
+     * @throws ClienteNotFoundException
+     */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<NotaFiscalDTO> list(@RequestParam(required = false) Long clienteId) throws ClienteNotFoundException {
@@ -43,17 +59,13 @@ public class NotaFiscalController {
         return aaa;
     }
 
+    /**
+     * Método para deletar uma nota fiscal usando um id passado como parâmetro.
+     * @param id Obrigatório. O id da nota fiscal que se deseja deletar.
+     */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteNotaFiscal(@PathVariable Long id) {
         notaFiscalService.deleteNotaFiscalById(id);
     }
-
-    /* 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCliente(@PathVariable Long id) throws ClienteNotFoundException{
-        clienteService.deleteClienteById(id);
-    } */
-
 }

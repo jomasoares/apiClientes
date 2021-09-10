@@ -13,6 +13,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entidade que representa os clientes (empresas). Contém as regras de persistência com o JPA.
+ * As regras de validação de dados estão na classe ClienteDTO.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -8,6 +8,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import lombok.Data;
 
+/**
+ * Classe que representa uma resposta personalizada para uma requisição Bad Request com argumento inválido.
+ */
 @Data
 public class ArgumentNotValidResponse {
     private List<String> errors;

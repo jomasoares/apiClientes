@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import dev.joao.desafioUnimed.entities.Cliente;
 import dev.joao.desafioUnimed.enums.RegimeTributario;
 
+/**
+ * Repositório para a entidade Cliente. Terceira camada da aplicação.
+ */
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
     
     Optional<Cliente> findByCnpj(String cnpj);

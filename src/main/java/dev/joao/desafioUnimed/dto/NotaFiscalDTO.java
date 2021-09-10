@@ -9,6 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * DTO da NotaFiscal. Clase criada para não sobrecarregar a classe NotaFiscal
+ * com duas responsabilidades (seguindo os conceitos SOLID). Enquanto a classe NotaFiscal é a entidade principal
+ * e serve omo referência para o banco de dados, esta classe contém as regras de validação de dados.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

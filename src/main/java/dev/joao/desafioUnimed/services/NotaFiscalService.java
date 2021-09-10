@@ -16,22 +16,38 @@ import dev.joao.desafioUnimed.repositories.ClienteRepository;
 import dev.joao.desafioUnimed.repositories.NotaFiscalRepository;
 import lombok.AllArgsConstructor;
 
+/**
+ * Clase com os serviços relacionados ao cliente. Segunda camada da aplicação.
+ */
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class NotaFiscalService {
     
     private final NotaFiscalRepository notaFiscalRepository;
     private final ClienteRepository clienteRepository;
+    private final ClienteService clienteService;
     private final NotaFiscalMapper notaFiscalMapper = NotaFiscalMapper.INSTANCE;
 
-    public NotaFiscalDTO createNotaFiscal(NotaFiscalDTO notaFiscalDTO) {
+    /**
+     * Serviço que cadastra uma nota fiscal
+     * @param notaFiscalDTO Obrigatório. Nota fiscal a ser cadastrada.
+     * @return
+     * @throws ClienteNotFoundException
+     */
+    public NotaFiscalDTO createNotaFiscal(NotaFiscalDTO notaFiscalDTO) throws ClienteNotFoundException {
+        clienteService.findClienteById(notaFiscalDTO.getCliente().getId());
         NotaFiscal notaFiscal = notaFiscalMapper.toEntity(notaFiscalDTO);
 
         notaFiscal = notaFiscalRepository.save(notaFiscal);
-        // notaFiscal.setCliente(clienteRepository.getById(notaFiscal.getCliente().getId()));
         return notaFiscalMapper.toDTO(notaFiscal);
     }
 
+    /**
+     * Serviço que lista as notas fiscais. pode ser filtrado para as notas de um cliente especifico.
+     * @param clienteId Optativo. Id do cliente para filtrar as notas.
+     * @return Uma lista com as otas fiscais.
+     * @throws ClienteNotFoundException
+     */
     public List<NotaFiscalDTO> list(Long clienteId) throws ClienteNotFoundException {
         if(clienteId == null) {
             return notaFiscalRepository.findAll()
@@ -49,13 +65,11 @@ public class NotaFiscalService {
         throw new ClienteNotFoundException();
     }
 
+    /**
+     * Serviço para deletar uma nota fiscal.
+     * @param id Obrigatório. Id da nota fiscal a ser deletada.
+     */
     public void deleteNotaFiscalById(Long id) {
         notaFiscalRepository.deleteById(id);
     }
-
-    /* 
-    public void deleteClienteById(Long id) throws ClienteNotFoundException {
-        validateIfExists(id);
-        clienteRepository.deleteById(id);
-    } */
 }
