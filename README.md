@@ -18,7 +18,7 @@ Tela para executar as ações de cadastro, deleção e recuperação do dado
 Dashboard contendo uma análise dos dados(Quantidade de clientes, clientes por tipo de tributação e outro que você acha pertinente)
 Apresentar link, ou video da aplicação e enviar código fontes.*
 
-umm video de demonstração pode ser visto [neste link](https://drive.google.com/file/d/1h4jTNqc8vUp-L3snkjxJUMJrMMMrmtnB/view?usp=sharing)
+umm video de demonstração pode ser visto [neste link](https://drive.google.com/file/d/1h4jTNqc8vUp-L3snkjxJUMJrMMMrmtnB/view?usp=sharing). Como o foco do desafio é a aplicação REST em Java, todas as validações são feitas na API, nenhuma no front.
 
 O projeto foi desenvolvido em Java 11 e possui as seguintes dependências:
 * [**Spring Boot Dev tools**](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools)
