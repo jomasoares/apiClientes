@@ -4,6 +4,9 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import lombok.Data;
 
+/**
+ * Classe que representa uma resposta personalizada para uma requisição Bad Request com o tipo inválido.
+ */
 @Data
 public class MethodArgumentTypeMismatchResponse {
     private String error;

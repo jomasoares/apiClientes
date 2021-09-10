@@ -1,0 +1,23 @@
+package dev.joao.desafioUnimed.mappers;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.MapperConfig;
+import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.factory.Mappers;
+
+import dev.joao.desafioUnimed.dto.NotaFiscalDTO;
+import dev.joao.desafioUnimed.entities.NotaFiscal;
+
+/**
+ * Mapper responsável por transformar uma instância da classe
+ * NotaFiscal para a classe NotaFiscalDTO e vice-versa.
+ */
+@Mapper
+@MapperConfig(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_NULL)
+public interface NotaFiscalMapper {
+    NotaFiscalMapper INSTANCE = Mappers.getMapper(NotaFiscalMapper.class);
+
+    NotaFiscal toEntity(NotaFiscalDTO notaFiscalDTO);
+
+    NotaFiscalDTO toDTO(NotaFiscal notaFiscal);
+}

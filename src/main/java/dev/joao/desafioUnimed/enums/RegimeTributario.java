@@ -3,6 +3,9 @@ package dev.joao.desafioUnimed.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * enum que contém os tipos de regime tributário.
+ */
 @Getter
 @AllArgsConstructor
 public enum RegimeTributario {
